@@ -1,0 +1,23 @@
+diff --git a/librecad/src/main/main.h b/librecad/src/main/main.h
+index 80d8720c..7347d184 100644
+--- a/librecad/src/main/main.h
++++ b/librecad/src/main/main.h
+@@ -27,18 +27,7 @@
+ #ifndef MAIN_H
+ #define MAIN_H
+ 
+-#include<QStringList>
+-
+ #define STR(x)   #x
+ #define XSTR(x)  STR(x)
+ 
+-/**
+- * @brief handleArgs
+- * @param argc cli argument counter from main()
+- * @param argv cli arguments from main()
+- * @param argClean a list of indices to be ignored
+- * @return
+- */
+-QStringList handleArgs(int argc, char** argv, const QList<int>& argClean);
+-
+ #endif

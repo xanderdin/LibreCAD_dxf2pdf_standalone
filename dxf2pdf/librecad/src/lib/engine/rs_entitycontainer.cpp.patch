@@ -1,0 +1,37 @@
+diff --git a/librecad/src/lib/engine/rs_entitycontainer.cpp b/librecad/src/lib/engine/rs_entitycontainer.cpp
+index 6f583841..c03e2306 100644
+--- a/librecad/src/lib/engine/rs_entitycontainer.cpp
++++ b/librecad/src/lib/engine/rs_entitycontainer.cpp
+@@ -29,8 +29,8 @@
+ #include <set>
+ #include <QObject>
+ 
+-#include "rs_dialogfactory.h"
+-#include "qg_dialogfactory.h"
++// #include "rs_dialogfactory.h"
++// #include "qg_dialogfactory.h"
+ #include "rs_entitycontainer.h"
+ 
+ #include "rs_debug.h"
+@@ -1561,7 +1561,7 @@ bool RS_EntityContainer::optimizeContours() {
+ 
+     while(count()>0) {
+         double dist(0.);
+-        RS_Vector&& vpTmp=getNearestEndpoint(vpEnd,&dist,&next);
++        // RS_Vector&& vpTmp=getNearestEndpoint(vpEnd,&dist,&next);
+         if(dist>1e-8) {
+             if(vpEnd.squaredTo(vpStart) < 1e-8) {
+                 RS_Entity* e2=entityAt(0);
+@@ -1572,9 +1572,9 @@ bool RS_EntityContainer::optimizeContours() {
+                 continue;
+             }
+             else {
+-                QG_DIALOGFACTORY->commandMessage(
+-                            errMsg.arg(dist).arg(vpTmp.x).arg(vpTmp.y).arg(vpEnd.x).arg(vpEnd.y)
+-                            );
++                // QG_DIALOGFACTORY->commandMessage(
++                //             errMsg.arg(dist).arg(vpTmp.x).arg(vpTmp.y).arg(vpEnd.x).arg(vpEnd.y)
++                //             );
+                 RS_DEBUG->print(RS_Debug::D_ERROR, "RS_EntityContainer::optimizeContours: hatch failed due to a gap");
+                 closed=false;
+                 break;

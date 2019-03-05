@@ -1,0 +1,30 @@
+diff --git a/librecad/src/lib/engine/rs_undo.cpp b/librecad/src/lib/engine/rs_undo.cpp
+index 5bcc1fc4..a5fd8b27 100644
+--- a/librecad/src/lib/engine/rs_undo.cpp
++++ b/librecad/src/lib/engine/rs_undo.cpp
+@@ -26,7 +26,7 @@
+ **********************************************************************/
+ 
+ #include<iostream>
+-#include "qc_applicationwindow.h"
++//#include "qc_applicationwindow.h"
+ #include "rs_undocycle.h"
+ #include "rs_undo.h"
+ #include "rs_debug.h"
+@@ -259,11 +259,11 @@ std::shared_ptr<RS_UndoCycle> RS_Undo::getRedoCycle() {
+   **/
+ void RS_Undo::setGUIButtons() const
+ {
+-	auto appWin = QC_ApplicationWindow::getAppWindow();
+-	if (!appWin) return;
+-	appWin->setRedoEnable(undoList.size() > 0 &&
+-						  undoPointer+1 < int(undoList.size()));
+-	appWin->setUndoEnable(undoList.size() > 0 && undoPointer >= 0);
++	// auto appWin = QC_ApplicationWindow::getAppWindow();
++	// if (!appWin) return;
++	// appWin->setRedoEnable(undoList.size() > 0 &&
++	// 					  undoPointer+1 < int(undoList.size()));
++	// appWin->setUndoEnable(undoList.size() > 0 && undoPointer >= 0);
+ }
+ 
+ 

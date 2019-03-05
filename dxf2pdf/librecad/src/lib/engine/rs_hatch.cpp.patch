@@ -1,0 +1,13 @@
+diff --git a/librecad/src/lib/engine/rs_hatch.cpp b/librecad/src/lib/engine/rs_hatch.cpp
+index ead5da31..d6531dfa 100644
+--- a/librecad/src/lib/engine/rs_hatch.cpp
++++ b/librecad/src/lib/engine/rs_hatch.cpp
+@@ -36,7 +36,7 @@
+ #include "rs_ellipse.h"
+ #include "rs_line.h"
+ #include "rs_graphicview.h"
+-#include "rs_dialogfactory.h"
++// #include "rs_dialogfactory.h"
+ #include "rs_infoarea.h"
+ 
+ #include "rs_information.h"

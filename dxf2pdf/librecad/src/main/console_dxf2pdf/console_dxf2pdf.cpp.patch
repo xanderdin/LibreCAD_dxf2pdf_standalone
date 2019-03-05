@@ -1,0 +1,23 @@
+diff --git a/librecad/src/main/console_dxf2pdf/console_dxf2pdf.cpp b/librecad/src/main/console_dxf2pdf/console_dxf2pdf.cpp
+index 32c8907f..62198a53 100644
+--- a/librecad/src/main/console_dxf2pdf/console_dxf2pdf.cpp
++++ b/librecad/src/main/console_dxf2pdf/console_dxf2pdf.cpp
+@@ -22,9 +22,7 @@
+ **
+ ******************************************************************************/
+ 
+-#include <QtCore>
+ #include <QCoreApplication>
+-#include <QApplication>
+ 
+ #include "rs_debug.h"
+ #include "rs_fontlist.h"
+@@ -47,7 +45,7 @@ int console_dxf2pdf(int argc, char* argv[])
+ 
+     RS_DEBUG->setLevel(RS_Debug::D_NOTHING);
+ 
+-    QApplication app(argc, argv);
++    QCoreApplication app(argc, argv);
+     QCoreApplication::setOrganizationName("LibreCAD");
+     QCoreApplication::setApplicationName("LibreCAD");
+     QCoreApplication::setApplicationVersion(XSTR(LC_VERSION));

@@ -1,0 +1,341 @@
+diff --git a/librecad/src/lib/gui/rs_graphicview.cpp b/librecad/src/lib/gui/rs_graphicview.cpp
+index e0b68584..a7c4d1d8 100644
+--- a/librecad/src/lib/gui/rs_graphicview.cpp
++++ b/librecad/src/lib/gui/rs_graphicview.cpp
+@@ -28,24 +28,24 @@
+ #include<climits>
+ #include<cmath>
+ 
+-#include <QApplication>
+-#include <QDesktopWidget>
+-#include <QAction>
+-#include <QMouseEvent>
++#include <QCoreApplication>
++// #include <QDesktopWidget>
++// #include <QAction>
++// #include <QMouseEvent>
+ #include <QtAlgorithms>
+ 
+ #include "rs_graphicview.h"
+ 
+ #include "rs_line.h"
+ #include "rs_linetypepattern.h"
+-#include "rs_eventhandler.h"
++// #include "rs_eventhandler.h"
+ #include "rs_graphic.h"
+ #include "rs_grid.h"
+ #include "rs_painter.h"
+ #include "rs_mtext.h"
+ #include "rs_text.h"
+ #include "rs_settings.h"
+-#include "rs_dialogfactory.h"
++// #include "rs_dialogfactory.h"
+ #include "rs_layer.h"
+ #include "rs_math.h"
+ #include "rs_debug.h"
+@@ -57,9 +57,10 @@
+ /**
+  * Constructor.
+  */
+-RS_GraphicView::RS_GraphicView(QWidget* parent, Qt::WindowFlags f)
+-    :QWidget(parent, f)
+-	,eventHandler{new RS_EventHandler{this}}
++RS_GraphicView::RS_GraphicView(/* QWidget */ QObject* parent, Qt::WindowFlags f)
++    // :QWidget(parent, f)
++    :QObject(parent)
++	// ,eventHandler{new RS_EventHandler{this}}
+ 	,gridColor(Qt::gray)
+ 	,metaGridColor{64, 64, 64}
+ 	,grid{new RS_Grid{this}}
+@@ -68,6 +69,8 @@ RS_GraphicView::RS_GraphicView(QWidget* parent, Qt::WindowFlags f)
+     ,previousViewTime(QDateTime::currentDateTime())
+     ,panning(false)
+ {
++    Q_UNUSED(f);
++
+     RS_SETTINGS->beginGroup("Colors");
+     setBackground(QColor(RS_SETTINGS->readEntry("/background", Colors::background)));
+     setGridColor(QColor(RS_SETTINGS->readEntry("/grid", Colors::grid)));
+@@ -212,123 +215,123 @@ void RS_GraphicView::centerY(double v) {
+ /**
+  * @return Current action or nullptr.
+  */
+-RS_ActionInterface* RS_GraphicView::getDefaultAction() {
+-	if (eventHandler) {
+-		return eventHandler->getDefaultAction();
+-	} else {
+-        return nullptr;
+-	}
+-}
++// RS_ActionInterface* RS_GraphicView::getDefaultAction() {
++// 	if (eventHandler) {
++// 		return eventHandler->getDefaultAction();
++// 	} else {
++//         return nullptr;
++// 	}
++// }
+ 
+ 
+ 
+ /**
+  * Sets the default action of the event handler.
+  */
+-void RS_GraphicView::setDefaultAction(RS_ActionInterface* action) {
+-	if (eventHandler) {
+-		eventHandler->setDefaultAction(action);
+-	}
+-}
++// void RS_GraphicView::setDefaultAction(RS_ActionInterface* action) {
++// 	if (eventHandler) {
++// 		eventHandler->setDefaultAction(action);
++// 	}
++// }
+ 
+ 
+ 
+ /**
+  * @return Current action or nullptr.
+  */
+-RS_ActionInterface* RS_GraphicView::getCurrentAction() {
+-	if (eventHandler) {
+-		return eventHandler->getCurrentAction();
+-	} else {
+-        return nullptr;
+-	}
+-}
++// RS_ActionInterface* RS_GraphicView::getCurrentAction() {
++// 	if (eventHandler) {
++// 		return eventHandler->getCurrentAction();
++// 	} else {
++//         return nullptr;
++// 	}
++// }
+ 
+ 
+ 
+ /**
+  * Sets the current action of the event handler.
+  */
+-void RS_GraphicView::setCurrentAction(RS_ActionInterface* action) {
+-    RS_DEBUG->print("RS_GraphicView::setCurrentAction");
+-	if (eventHandler) {
+-		eventHandler->setCurrentAction(action);
+-	}
+-	RS_DEBUG->print("RS_GraphicView::setCurrentAction: OK");
+-}
++// void RS_GraphicView::setCurrentAction(RS_ActionInterface* action) {
++//     RS_DEBUG->print("RS_GraphicView::setCurrentAction");
++// 	if (eventHandler) {
++// 		eventHandler->setCurrentAction(action);
++// 	}
++// 	RS_DEBUG->print("RS_GraphicView::setCurrentAction: OK");
++// }
+ 
+ 
+ /**
+  * Kills all running selection actions. Called when a selection action
+  * is launched to reduce confusion.
+  */
+-void RS_GraphicView::killSelectActions() {
+-	if (eventHandler) {
+-		eventHandler->killSelectActions();
+-	}
+-}
++// void RS_GraphicView::killSelectActions() {
++// 	if (eventHandler) {
++// 		eventHandler->killSelectActions();
++// 	}
++// }
+ 
+ 
+ 
+ /**
+  * Kills all running actions.
+  */
+-void RS_GraphicView::killAllActions() {
+-	if (eventHandler) {
+-		eventHandler->killAllActions();
+-	}
+-}
++// void RS_GraphicView::killAllActions() {
++// 	if (eventHandler) {
++// 		eventHandler->killAllActions();
++// 	}
++// }
+ 
+ 
+ 
+ /**
+  * Go back in menu or current action.
+  */
+-void RS_GraphicView::back()
+-{
+-	if (eventHandler && eventHandler->hasAction())
+-    {
+-		eventHandler->back();
+-    }
+-}
++// void RS_GraphicView::back()
++// {
++// 	if (eventHandler && eventHandler->hasAction())
++//     {
++// 		eventHandler->back();
++//     }
++// }
+ 
+ /**
+  * Go forward with the current action.
+  */
+-void RS_GraphicView::enter() {
+-	if (eventHandler && eventHandler->hasAction()) {
+-		eventHandler->enter();
+-	}
+-}
++// void RS_GraphicView::enter() {
++// 	if (eventHandler && eventHandler->hasAction()) {
++// 		eventHandler->enter();
++// 	}
++// }
+ 
+ /**
+  * Called by the actual GUI class which implements a command line.
+  */
+-void RS_GraphicView::commandEvent(RS_CommandEvent* e) {
+-	if (eventHandler) {
+-		eventHandler->commandEvent(e);
+-	}
+-}
++// void RS_GraphicView::commandEvent(RS_CommandEvent* e) {
++// 	if (eventHandler) {
++// 		eventHandler->commandEvent(e);
++// 	}
++// }
+ 
+ /**
+  * Enables coordinate input in the command line.
+  */
+-void RS_GraphicView::enableCoordinateInput() {
+-	if (eventHandler) {
+-		eventHandler->enableCoordinateInput();
+-	}
+-}
++// void RS_GraphicView::enableCoordinateInput() {
++// 	if (eventHandler) {
++// 		eventHandler->enableCoordinateInput();
++// 	}
++// }
+ 
+ 
+ 
+ /**
+  * Disables coordinate input in the command line.
+  */
+-void RS_GraphicView::disableCoordinateInput() {
+-	if (eventHandler) {
+-		eventHandler->disableCoordinateInput();
+-	}
+-}
++// void RS_GraphicView::disableCoordinateInput() {
++// 	if (eventHandler) {
++// 		eventHandler->disableCoordinateInput();
++// 	}
++// }
+ 
+ 
+ 
+@@ -735,7 +738,7 @@ void RS_GraphicView::zoomWindow(RS_Vector v1, RS_Vector v2,
+ 		 pixRight == INT_MIN || pixRight== INT_MAX ||
+ 		 pixTop == INT_MIN || pixTop== INT_MAX ||
+ 		 pixBottom == INT_MIN || pixBottom== INT_MAX ) {
+-		RS_DIALOGFACTORY->commandMessage("Requested zooming factor out of range. Zooming not changed");
++		// RS_DIALOGFACTORY->commandMessage("Requested zooming factor out of range. Zooming not changed");
+ 		return;
+ 	}
+ 	saveView();
+@@ -889,7 +892,8 @@ void RS_GraphicView::drawLayer1(RS_Painter *painter) {
+ 	if (!isPrintPreview()) {
+ 
+ 		//increase grid point size on for DPI>96
+-		int dpiX = qApp->desktop()->logicalDpiX();
++		// int dpiX = qApp->desktop()->logicalDpiX();
++		int dpiX = 0;
+ 		//        DEBUG_HEADER
+ 		//        RS_DEBUG->print(RS_Debug::D_ERROR, "dpiX=%d\n",dpiX);
+ 		const RS_Pen penSaved=painter->getPen();
+@@ -1563,36 +1567,36 @@ void RS_GraphicView::drawOverlay(RS_Painter *painter)
+     }
+ }
+ 
+-RS2::SnapRestriction RS_GraphicView::getSnapRestriction() const
+-{
+-	return defaultSnapRes;
+-}
++// RS2::SnapRestriction RS_GraphicView::getSnapRestriction() const
++// {
++// 	return defaultSnapRes;
++// }
+ 
+-RS_SnapMode RS_GraphicView::getDefaultSnapMode() const
+-{
+-	return defaultSnapMode;
+-}
++// RS_SnapMode RS_GraphicView::getDefaultSnapMode() const
++// {
++// 	return defaultSnapMode;
++// }
+ 
+ /**
+  * Sets the default snap mode used by newly created actions.
+  */
+-void RS_GraphicView::setDefaultSnapMode(RS_SnapMode sm) {
+-	defaultSnapMode = sm;
+-	if (eventHandler) {
+-		eventHandler->setSnapMode(sm);
+-	}
+-}
++// void RS_GraphicView::setDefaultSnapMode(RS_SnapMode sm) {
++// 	defaultSnapMode = sm;
++// 	if (eventHandler) {
++// 		eventHandler->setSnapMode(sm);
++// 	}
++// }
+ 
+ /**
+  * Sets a snap restriction (e.g. orthogonal).
+  */
+-void RS_GraphicView::setSnapRestriction(RS2::SnapRestriction sr) {
+-	defaultSnapRes = sr;
++// void RS_GraphicView::setSnapRestriction(RS2::SnapRestriction sr) {
++// 	defaultSnapRes = sr;
+ 
+-	if (eventHandler) {
+-		eventHandler->setSnapRestriction(sr);
+-	}
+-}
++// 	if (eventHandler) {
++// 		eventHandler->setSnapRestriction(sr);
++// 	}
++// }
+ 
+ /**
+  * Translates a vector in real coordinates to a vector in screen coordinates.
+@@ -1729,13 +1733,13 @@ RS_EntityContainer* RS_GraphicView::getOverlayContainer(RS2::OverlayGraphics pos
+ 
+ }
+ 
+-RS_Grid* RS_GraphicView::getGrid() const{
+-	return grid.get();
+-}
++// RS_Grid* RS_GraphicView::getGrid() const{
++// 	return grid.get();
++// }
+ 
+-RS_EventHandler* RS_GraphicView::getEventHandler() const{
+-    return eventHandler;
+-}
++// RS_EventHandler* RS_GraphicView::getEventHandler() const{
++//     return eventHandler;
++// }
+ 
+ void RS_GraphicView::setBackground(const RS_Color& bg) {
+ 	background = bg;

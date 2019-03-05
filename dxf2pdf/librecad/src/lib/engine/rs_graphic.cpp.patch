@@ -1,0 +1,22 @@
+diff --git a/librecad/src/lib/engine/rs_graphic.cpp b/librecad/src/lib/engine/rs_graphic.cpp
+index 70d95151..e5c1e480 100644
+--- a/librecad/src/lib/engine/rs_graphic.cpp
++++ b/librecad/src/lib/engine/rs_graphic.cpp
+@@ -30,7 +30,7 @@
+ //#include <QDebug>
+ 
+ #include "rs_graphic.h"
+-#include "rs_dialogfactory.h"
++// #include "rs_dialogfactory.h"
+ 
+ #include "rs_debug.h"
+ #include "rs_fileio.h"
+@@ -335,7 +335,7 @@ bool RS_Graphic::save(bool isAutoSave)
+                  && modifiedTime.isValid() && m != modifiedTime ) {
+                 //file modified by others
+ //            qDebug()<<"detected on disk change";
+-                RS_DIALOGFACTORY->commandMessage(QObject::tr("File on disk modified. Please save to another file to avoid data loss! File modified: %1").arg(filename));
++                // RS_DIALOGFACTORY->commandMessage(QObject::tr("File on disk modified. Please save to another file to avoid data loss! File modified: %1").arg(filename));
+                 return false;
+             }
+ 

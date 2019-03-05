@@ -1,0 +1,68 @@
+diff --git a/librecad/src/lib/fileio/rs_fileio.cpp b/librecad/src/lib/fileio/rs_fileio.cpp
+index e8593837..1d1eb8f9 100644
+--- a/librecad/src/lib/fileio/rs_fileio.cpp
++++ b/librecad/src/lib/fileio/rs_fileio.cpp
+@@ -32,10 +32,10 @@
+ #include <QApplication>
+ #endif
+ #include "rs_fileio.h"
+-#include "rs_filtercxf.h"
+-#include "rs_filterdxf1.h"
+-#include "rs_filterjww.h"
+-#include "rs_filterlff.h"
++// #include "rs_filtercxf.h"
++// #include "rs_filterdxf1.h"
++// #include "rs_filterjww.h"
++// #include "rs_filterlff.h"
+ #include "rs_filterdxfrw.h"
+ #include "rs_debug.h"
+ 
+@@ -66,11 +66,11 @@ bool RS_FileIO::fileImport(RS_Graphic& graphic, const QString& file,
+ 		if (filter){
+ #ifdef DWGSUPPORT
+             if (file.endsWith(".dwg",Qt::CaseInsensitive)){
+-                QMessageBox::StandardButton sel = QMessageBox::warning(qApp->activeWindow(), QObject::tr("Warning"),
+-                                                  QObject::tr("experimental, save your work first.\nContinue?"),
+-                                                  QMessageBox::Ok|QMessageBox::Cancel, QMessageBox::NoButton);
+-                if (sel == QMessageBox::Cancel)
+-                    return false;
++                // QMessageBox::StandardButton sel = QMessageBox::warning(qApp->activeWindow(), QObject::tr("Warning"),
++                //                                   QObject::tr("experimental, save your work first.\nContinue?"),
++                //                                   QMessageBox::Ok|QMessageBox::Cancel, QMessageBox::NoButton);
++                // if (sel == QMessageBox::Cancel)
++                //     return false;
+             }
+ #endif
+             return filter->fileImport(graphic, file, t);
+@@ -99,11 +99,11 @@ RS2::FormatType RS_FileIO::detectFormat(QString const& file, bool forRead)
+ 	// look up table
+ 	std::map<QString, RS2::FormatType> list{
+ 		{"dxf", RS2::FormatDXFRW},
+-		{"cxf", RS2::FormatCXF},
+-		{"lff", RS2::FormatLFF}
++		// {"cxf", RS2::FormatCXF},
++		// {"lff", RS2::FormatLFF}
+ 	};
+ 	// only read support for dwg
+-	if(forRead) list["dwg"]=RS2::FormatDWG;
++	// if(forRead) list["dwg"]=RS2::FormatDWG;
+ 
+ 	QString const extension = QFileInfo(file).suffix().toLower();
+ 	RS2::FormatType type=(list.find(extension)!=
+@@ -215,11 +215,11 @@ std::unique_ptr<RS_FilterInterface> RS_FileIO::getExportFilter(const QString &fi
+ std::vector<std::function<RS_FilterInterface*()>> RS_FileIO::getFilters()
+ {
+ 												  return {
+-												  RS_FilterLFF::createFilter
+-												  ,RS_FilterDXFRW::createFilter
+-												  ,RS_FilterCXF::createFilter
+-												  ,RS_FilterJWW::createFilter
+-												  ,RS_FilterDXF1::createFilter
++												//   RS_FilterLFF::createFilter
++												  RS_FilterDXFRW::createFilter
++												//   ,RS_FilterCXF::createFilter
++												//   ,RS_FilterJWW::createFilter
++												  // ,RS_FilterDXF1::createFilter
+ 												  };
+ }
+ 

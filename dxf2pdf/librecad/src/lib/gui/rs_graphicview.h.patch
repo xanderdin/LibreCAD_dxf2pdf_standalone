@@ -1,0 +1,129 @@
+diff --git a/librecad/src/lib/gui/rs_graphicview.h b/librecad/src/lib/gui/rs_graphicview.h
+index 1a33900a..f2787595 100644
+--- a/librecad/src/lib/gui/rs_graphicview.h
++++ b/librecad/src/lib/gui/rs_graphicview.h
+@@ -29,7 +29,7 @@
+ #define RS_GRAPHICVIEW_H
+ 
+ #include "rs_entitycontainer.h"
+-#include "rs_snapper.h"
++// #include "rs_snapper.h"
+ #include "lc_rect.h"
+ 
+ #include <QDateTime>
+@@ -39,11 +39,11 @@
+ #include <QAction>
+ 
+ 
+-class QMouseEvent;
+-class QKeyEvent;
+-class RS_ActionInterface;
+-class RS_EventHandler;
+-class RS_CommandEvent;
++// class QMouseEvent;
++// class QKeyEvent;
++// class RS_ActionInterface;
++// class RS_EventHandler;
++// class RS_CommandEvent;
+ class RS_Grid;
+ struct RS_LineTypePattern;
+ 
+@@ -56,12 +56,12 @@ struct RS_LineTypePattern;
+  * Note that this is just an interface used as a slot to
+  * communicate with the LibreCAD from a GUI level.
+  */
+-class RS_GraphicView : public QWidget
++class RS_GraphicView : public QObject // QWidget
+ {
+     Q_OBJECT
+ 
+ public:
+-	RS_GraphicView(QWidget * parent = 0, Qt::WindowFlags f = 0);
++	RS_GraphicView(/* QWidget */ QObject * parent = 0, Qt::WindowFlags f = 0);
+ 	virtual ~RS_GraphicView();
+ 
+     void cleanUp();
+@@ -228,20 +228,20 @@ public:
+ 	void freezeZoom(bool freeze);
+ 	bool isZoomFrozen() const;
+ 
+-	void setDefaultAction(RS_ActionInterface* action);
+-	RS_ActionInterface*  getDefaultAction();
+-    void setCurrentAction(RS_ActionInterface* action);
+-	RS_ActionInterface* getCurrentAction();
++	// void setDefaultAction(RS_ActionInterface* action);
++	// RS_ActionInterface*  getDefaultAction();
++    // void setCurrentAction(RS_ActionInterface* action);
++	// RS_ActionInterface* getCurrentAction();
+ 
+-	void killSelectActions();
+-	void killAllActions();
++	// void killSelectActions();
++	// void killAllActions();
+ 
+-	void back();
+-	void enter();
++	// void back();
++	// void enter();
+ 
+-	void commandEvent(RS_CommandEvent* e);
+-	void enableCoordinateInput();
+-	void disableCoordinateInput();
++	// void commandEvent(RS_CommandEvent* e);
++	// void enableCoordinateInput();
++	// void disableCoordinateInput();
+ 
+ 	virtual void zoomIn(double f=1.5, const RS_Vector& center=RS_Vector(false));
+ 	virtual void zoomInX(double f=1.5);
+@@ -284,13 +284,13 @@ public:
+ 	virtual void drawMetaGrid(RS_Painter *painter);
+ 	virtual void drawOverlay(RS_Painter *painter);
+ 
+-	RS_Grid* getGrid() const;
++	// RS_Grid* getGrid() const;
+     virtual void updateGridStatusWidget(const QString& /*text*/) = 0;
+ 
+-	void setDefaultSnapMode(RS_SnapMode sm);
+-	RS_SnapMode getDefaultSnapMode() const;
+-	void setSnapRestriction(RS2::SnapRestriction sr);
+-	RS2::SnapRestriction getSnapRestriction() const;
++	// void setDefaultSnapMode(RS_SnapMode sm);
++	// RS_SnapMode getDefaultSnapMode() const;
++	// void setSnapRestriction(RS2::SnapRestriction sr);
++	// RS2::SnapRestriction getSnapRestriction() const;
+ 
+ 	bool isGridOn() const;
+ 	bool isGridIsometric() const;
+@@ -331,7 +331,7 @@ public:
+ 	void setRelativeZero(const RS_Vector& pos);
+ 	void moveRelativeZero(const RS_Vector& pos);
+ 
+-	RS_EventHandler* getEventHandler() const;
++	// RS_EventHandler* getEventHandler() const;
+ 
+ 	/**
+ 		 * Enables or disables print preview.
+@@ -376,7 +376,7 @@ public:
+ protected:
+ 
+     RS_EntityContainer* container{nullptr}; // Holds a pointer to all the enties
+-    RS_EventHandler* eventHandler;
++    // RS_EventHandler* eventHandler;
+ 
+ 	/** background color (any color) */
+ 	RS_Color background;
+@@ -402,12 +402,12 @@ protected:
+ 		 * Current default snap mode for this graphic view. Used for new
+ 		 * actions.
+ 		 */
+-	RS_SnapMode defaultSnapMode;
++	// RS_SnapMode defaultSnapMode;
+ 	/**
+ 		 * Current default snap restriction for this graphic view. Used for new
+ 		 * actions.
+ 		 */
+-	RS2::SnapRestriction defaultSnapRes;
++	// RS2::SnapRestriction defaultSnapRes;
+ 
+ 	RS2::DrawingMode drawingMode;
+ 
