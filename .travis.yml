@@ -1,0 +1,29 @@
+language: cpp
+dist: trusty
+compiler: gcc
+
+branches:
+  only:
+    - master
+
+addons:
+  apt:
+    packages:
+    - qt5-default
+    - qtbase5-dev
+    - libqt5svg5-dev
+    - qttools5-dev
+    - qttools5-dev-tools
+    - libmuparser-dev
+    - libboost-dev
+    - libfreetype6-dev
+    - libicu-dev
+    - pkg-config
+
+install: ./prepare.sh
+
+script:
+  - mkdir build && cd build
+  - cmake ../LibreCAD
+  - make -j2
+  - ./OUT/dxf2pdf --help
