@@ -1,5 +1,7 @@
 # LibreCAD dxf2pdf standalone
 
+[![Build Status](https://travis-ci.com/xanderdin/LibreCAD_dxf2pdf_standalone.svg?branch=master)](https://travis-ci.com/xanderdin/LibreCAD_dxf2pdf_standalone)
+
 This project is a set of patches to [LibreCAD][librecad] source code for making
 [dxf2pdf][dxf2pdf] tool to be a standalone executable that does not require a
 running *X* server for its functioning (*X* libraries still must be present
