@@ -30,6 +30,13 @@ First, run `prepare.sh` script:
 ./prepare.sh
 ```
 
+Optionally, you can specify a certain LibreCAD commit as a base for building,
+e.g:
+
+```sh
+./prepare.sh e469c5e8d6db3297330161f6e95fd79cac9e780d
+```
+
 The script will download *LibreCAD* sources, apply patches and copy
 *CMakeLists.txt* files to required places inside *LibreCAD* directory structure.
 

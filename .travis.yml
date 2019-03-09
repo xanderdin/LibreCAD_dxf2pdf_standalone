@@ -27,3 +27,4 @@ script:
   - cmake ../LibreCAD
   - make -j2
   - ./OUT/dxf2pdf --help
+  - ./OUT/dxf2pdf --version

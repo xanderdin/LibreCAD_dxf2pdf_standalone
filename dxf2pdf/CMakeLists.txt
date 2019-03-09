@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.5.0 FATAL_ERROR)
 cmake_policy(SET CMP0048 NEW)
 
-# Version of LibreCAD from which sources were taken
-# TODO: automate substitution of this value
+# Version of LibreCAD from which sources were taken.
+# Don't change it here because it is to be substituted
+# automatically by running prepare.sh script.
 set(LC_VERSION "2.2.0-alpha")
 
 project(dxf2pdf VERSION 0.1.0 LANGUAGES CXX)
