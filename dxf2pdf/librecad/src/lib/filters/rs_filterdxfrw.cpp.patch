@@ -1,5 +1,5 @@
 diff --git a/librecad/src/lib/filters/rs_filterdxfrw.cpp b/librecad/src/lib/filters/rs_filterdxfrw.cpp
-index a93ff90f..cedb8302 100644
+index d200688b..44bf36bb 100644
 --- a/librecad/src/lib/filters/rs_filterdxfrw.cpp
 +++ b/librecad/src/lib/filters/rs_filterdxfrw.cpp
 @@ -52,7 +52,8 @@
@@ -21,7 +21,7 @@ index a93ff90f..cedb8302 100644
          int  lastError = dwgr.getError();
          if (success==false) {
              printDwgError(lastError);
-@@ -3943,51 +3944,51 @@ QString RS_FilterDXFRW::printDwgVersion(int v){
+@@ -3961,51 +3962,51 @@ QString RS_FilterDXFRW::printDwgVersion(int v){
  void RS_FilterDXFRW::printDwgError(int le){
      switch (le) {
      case DRW::BAD_UNKNOWN:

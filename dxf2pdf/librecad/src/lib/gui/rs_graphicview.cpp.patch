@@ -1,5 +1,5 @@
 diff --git a/librecad/src/lib/gui/rs_graphicview.cpp b/librecad/src/lib/gui/rs_graphicview.cpp
-index e0b68584..a7c4d1d8 100644
+index a17810ab..228376e3 100644
 --- a/librecad/src/lib/gui/rs_graphicview.cpp
 +++ b/librecad/src/lib/gui/rs_graphicview.cpp
 @@ -28,24 +28,24 @@
@@ -262,7 +262,7 @@ index e0b68584..a7c4d1d8 100644
  		//        DEBUG_HEADER
  		//        RS_DEBUG->print(RS_Debug::D_ERROR, "dpiX=%d\n",dpiX);
  		const RS_Pen penSaved=painter->getPen();
-@@ -1563,36 +1567,36 @@ void RS_GraphicView::drawOverlay(RS_Painter *painter)
+@@ -1595,36 +1599,36 @@ void RS_GraphicView::drawOverlay(RS_Painter *painter)
      }
  }
  
@@ -319,7 +319,7 @@ index e0b68584..a7c4d1d8 100644
  
  /**
   * Translates a vector in real coordinates to a vector in screen coordinates.
-@@ -1729,13 +1733,13 @@ RS_EntityContainer* RS_GraphicView::getOverlayContainer(RS2::OverlayGraphics pos
+@@ -1761,13 +1765,13 @@ RS_EntityContainer* RS_GraphicView::getOverlayContainer(RS2::OverlayGraphics pos
  
  }
  

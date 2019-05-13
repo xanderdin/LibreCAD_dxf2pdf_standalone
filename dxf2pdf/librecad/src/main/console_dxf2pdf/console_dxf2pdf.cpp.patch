@@ -1,5 +1,5 @@
 diff --git a/librecad/src/main/console_dxf2pdf/console_dxf2pdf.cpp b/librecad/src/main/console_dxf2pdf/console_dxf2pdf.cpp
-index 32c8907f..62198a53 100644
+index 8f7800cf..f5ee34b6 100644
 --- a/librecad/src/main/console_dxf2pdf/console_dxf2pdf.cpp
 +++ b/librecad/src/main/console_dxf2pdf/console_dxf2pdf.cpp
 @@ -22,9 +22,7 @@
@@ -12,7 +12,7 @@ index 32c8907f..62198a53 100644
  
  #include "rs_debug.h"
  #include "rs_fontlist.h"
-@@ -47,7 +45,7 @@ int console_dxf2pdf(int argc, char* argv[])
+@@ -49,7 +47,7 @@ int console_dxf2pdf(int argc, char* argv[])
  
      RS_DEBUG->setLevel(RS_Debug::D_NOTHING);
  

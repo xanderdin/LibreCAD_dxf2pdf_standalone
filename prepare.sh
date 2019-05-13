@@ -17,7 +17,7 @@ LIBRECAD_DIR="./LibreCAD"
 LIBRECAD_GIT="https://github.com/LibreCAD/LibreCAD.git"
 
 # Specific LibreCAD commit to use as a base for dxf2pdf build
-LIBRECAD_COMMIT="c2635841b751e1cea1b4cfc2129fea265b41241c"
+LIBRECAD_COMMIT="664464a5fcd6718b51061006e61919063583f995"
 
 # If provided, the first argument to this script
 # will override the commit hash set above.
