@@ -55,7 +55,7 @@ for F in $(find $DXF2PDF_DIR -type f -name 'CMakeLists.txt' -print); do
 done
 
 echo "Setting LibreCAD version to $LIBRECAD_VER"
-sed -i "s|2.2.0-alpha|$LIBRECAD_VER|" $LIBRECAD_DIR/CMakeLists.txt
+sed -i "s|2\.2\.0-alpha|$LIBRECAD_VER|" $LIBRECAD_DIR/CMakeLists.txt
 
 echo "Done."
 
