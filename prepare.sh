@@ -1,4 +1,4 @@
-#!/bin/bash #-e
+#!/bin/bash -e
 #
 # This script fetches LibreCAD source code and
 # applies patches to it required for building of

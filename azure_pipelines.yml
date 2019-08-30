@@ -19,6 +19,7 @@ steps:
     brew link qt5 --force
 
     ./prepare.sh
+    echo 'ok'
   displayName: 'Install dependencies'
 
 - bash: |
