@@ -30,6 +30,7 @@ steps:
     export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/boost@1.60/include"
     export LDFLAGS="$LDFLAGS -L/usr/local/opt/qt/lib"
     export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/qt/include"
+    export Boost_INCLUDE_DIR="/usr/local/opt/boost@1.60/include"
     cmake ../LibreCAD
     make -j$(sysctl -n hw.ncpu)
 
