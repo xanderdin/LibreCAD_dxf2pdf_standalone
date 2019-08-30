@@ -1,0 +1,23 @@
+diff --git a/librecad/src/lib/engine/rs_system.cpp b/librecad/src/lib/engine/rs_system.cpp
+index 0e0e4f4c..c7c8d45b 100644
+--- a/librecad/src/lib/engine/rs_system.cpp
++++ b/librecad/src/lib/engine/rs_system.cpp
+@@ -586,15 +586,15 @@ QStringList RS_System::getDirectoryList(const QString& _subDirectory) {
+ #ifdef Q_OS_MAC
+     // Apple uses the resource directory
+     if (!appDir.isEmpty() && appDir!="/") {
+-        dirList.append(appDir + "/../Resources/" + subDirectory);
++//        dirList.append(appDir + "/../Resources/" + subDirectory);
+     }
+ #endif
+ 
+-#ifndef Q_OS_MAC
++//#ifndef Q_OS_MAC
+         // Add support directory if librecad is run-in-place,
+         // not for Apple because it uses resources this is more for unix systems
+         dirList.append(appDir + "/resources/" + subDirectory);
+-#endif
++//#endif
+ 
+     // Individual directories:
+     RS_SETTINGS->beginGroup("/Paths");
