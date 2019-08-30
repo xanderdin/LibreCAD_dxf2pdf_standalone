@@ -1,0 +1,54 @@
+trigger:
+- test_osx_build
+
+pr: none
+
+pool:
+  vmImage: 'macos-10.14'
+
+steps:
+
+- bash: |
+    set -e
+
+    brew install \
+        boost@1.60 \
+        gcc@9 \
+        qt5
+
+    brew link qt5 --force
+
+    ./prepare.sh
+  displayName: 'Install dependencies'
+
+- bash: |
+    set -e
+
+    mkdir build
+    cd build
+    cmake ../LibreCAD
+    make -j$(sysctl -n hw.ncpu)
+
+    ls -lahR OUT
+  displayName: 'Build from sources'
+
+- bash: |
+    set -e
+
+    cd build/OUT
+    wget https://github.com/xanderdin/LibreCAD_dxf2pdf_standalone/files/3556756/one.zip
+    unzip one.zip
+    ./dxf2pdf one.dxf
+    mv one.pdf ../../
+  displayName: 'Test dxf to pdf'
+
+- task: CompyFiles@2
+  inputs:
+    contents: 'one.pdf'
+    targetFolder: $(Build.ArtifactStagingDirectory)
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: OnePdf
+
