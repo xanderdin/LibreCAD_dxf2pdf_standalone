@@ -13,6 +13,7 @@ steps:
 
     brew install \
         boost@1.60 \
+        gcc@9 \
         qt5
 
     brew link qt5 --force
