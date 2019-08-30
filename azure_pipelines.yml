@@ -9,7 +9,7 @@ pool:
 steps:
 
 - bash: |
-    set -e
+    #set -e
 
     brew install \
         boost@1.60 \
