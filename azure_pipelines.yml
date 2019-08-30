@@ -26,10 +26,10 @@ steps:
 
     mkdir build
     cd build
-    export LDFLAGS="-L/usr/local/opt/boost@1.60/lib"
-    export CPPFLAGS="-I/usr/local/opt/boost@1.60/include"
-    export LDFLAGS="-L/usr/local/opt/qt/lib"
-    export CPPFLAGS="-I/usr/local/opt/qt/include"
+    export LDFLAGS="$LDFLAGS -L/usr/local/opt/boost@1.60/lib"
+    export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/boost@1.60/include"
+    export LDFLAGS="$LDFLAGS -L/usr/local/opt/qt/lib"
+    export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/qt/include"
     cmake ../LibreCAD
     make -j$(sysctl -n hw.ncpu)
 
