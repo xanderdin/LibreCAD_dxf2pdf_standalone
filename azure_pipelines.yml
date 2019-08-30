@@ -42,7 +42,7 @@ steps:
     mv one.pdf ../../
   displayName: 'Test dxf to pdf'
 
-- task: CompyFiles@2
+- task: CopyFiles@2
   inputs:
     contents: 'one.pdf'
     targetFolder: $(Build.ArtifactStagingDirectory)
