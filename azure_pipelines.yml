@@ -13,7 +13,6 @@ steps:
 
     brew install \
         boost@1.60 \
-        gcc@9 \
         qt5
 
     brew link qt5 --force
@@ -45,13 +44,15 @@ steps:
     cd build/OUT
     wget https://github.com/xanderdin/LibreCAD_dxf2pdf_standalone/files/3556756/one.zip
     unzip one.zip
-    ./dxf2pdf one.dxf
-    mv one.pdf ../../
+    wget https://github.com/xanderdin/LibreCAD_dxf2pdf_standalone/files/3558569/one_0.13_lines.dxf.zip
+    unzip one_0.13_lines.dxf.zip one_0.13_lines.dxf
+    ./dxf2pdf *.dxf
+    mv *.pdf ../../
   displayName: 'Test dxf to pdf'
 
 - task: CopyFiles@2
   inputs:
-    contents: 'one.pdf'
+    contents: '*.pdf'
     targetFolder: $(Build.ArtifactStagingDirectory)
 
 - task: PublishBuildArtifacts@1
