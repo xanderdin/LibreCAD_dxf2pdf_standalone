@@ -32,6 +32,7 @@ steps:
     export LDFLAGS="$LDFLAGS -L/usr/local/opt/qt/lib"
     export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/qt/include"
     export BOOST_ROOT="/usr/local/opt/boost@1.60"
+    export PATH="/usr/local/opt/qt/bin:$PATH"
     cmake ../LibreCAD
     make -j$(sysctl -n hw.ncpu)
 
