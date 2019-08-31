@@ -9,7 +9,7 @@ pool:
 steps:
 
 - bash: |
-    #set -e
+    set -e
 
     brew install \
         boost@1.60 \
@@ -18,7 +18,6 @@ steps:
     brew link qt5 --force
 
     ./prepare.sh
-    echo 'ok'
   displayName: 'Install dependencies'
 
 - bash: |
@@ -36,6 +35,7 @@ steps:
     make -j$(sysctl -n hw.ncpu)
 
     ls -lahR OUT
+    OUT/dxf2pdf --version
   displayName: 'Build from sources'
 
 - bash: |
